@@ -31,17 +31,18 @@ reactive-dict@1.1.8
 
 # Community Packages
 
-flemay:less-autoprefixer
 aldeed:collection2
 kadira:flow-router
 kadira:blaze-layout
-useraccounts:semantic-ui
 natestrauser:animate-css
 dburles:collection-helpers
 johnantoni:meteor-normalize
 ostrio:templatehelpers
-semantic:ui-css
 standard-minifier-css@1.2.0_1
 standard-minifier-js@1.2.0_1
 simple:dev-error-overlay
 shell-server@0.2.1
+useraccounts:bootstrap
+twbs:bootstrap
+fourseven:scss
+reywood:bootstrap3-sass

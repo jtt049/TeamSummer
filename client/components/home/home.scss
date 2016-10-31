@@ -7,11 +7,11 @@
         transition: 0.7s color;
 
         &:hover {
-            color: @primaryIconColor;
+            color: $primaryIconColor;
         }
 
         &.hover-orange.html5:hover {
-            color: @html5Orange;
+            color: $html5Orange;
         }
     }
 
@@ -27,22 +27,22 @@
 
     .column > .icon-wrapper {
         font-size: 2em;
-        color: @primaryIconColor;
+        color: $primaryIconColor;
     }
 
-    @media (max-width: @largeDesktopWidth) {
+    @media (max-width: $largeDesktopWidth) {
         .column > .icon-wrapper {
             font-size: 1.5em;
         }
     }
 
-    @media (max-width: @mediumDesktopWidth) {
+    @media (max-width: $mediumDesktopWidth) {
         .column > .icon-wrapper {
             font-size: 1em;
         }
     }
 
-    @media (max-width: @tabletWidth) {
+    @media (max-width: $tabletWidth) {
         .features.grid .headline {
             display: none;
         }

@@ -10,7 +10,7 @@ body, #main {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    color: @primaryFontColor;
+    color: $primaryFontColor;
     font-family: 'Fauna One', serif;
 }
 
@@ -19,13 +19,13 @@ a {
     transition: 0.3s color;
 
     &:hover {
-        color: @primaryLinkHoverColor;
+        color: $primaryLinkHoverColor;
     }
 }
 
 .icon {
     &.orange {
-        color: @html5Orange;
+        color: $html5Orange;
     }
 }
 
@@ -35,7 +35,7 @@ a {
 
 .site-wrapper {
     margin: 0 auto;
-    max-width: @largeDesktopWidth;
+    max-width: $largeDesktopWidth;
 }
 
 /* -------------------
@@ -45,6 +45,6 @@ a {
     border-radius: 0;
 
     a:hover {
-        color: @secondaryLinkHoverColor;
+        color: $secondaryLinkHoverColor;
     }
 }
