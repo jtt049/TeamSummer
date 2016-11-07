@@ -1,0 +1,23 @@
+<template name="createExperiment">
+    <h1>Create an experiment</h1>
+    <form action="">
+        <div class="form-group">
+            <label for="team-size">Workers per Team</label>
+            <input type="number" name="team-size" id="team-size" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="queue-task">Queueing Task</label>
+            <input type="text" name="queue-task" id="queue-task" class="form-control" placeholder="http://tetris.com">
+        </div>
+        <div class="form-group">
+            <label for="constraints">Constraints</label>
+        </div>
+        <div class="form-group">
+            <label for="task-url">Queueing Task</label>
+            <input type="text" name="task-url" id="task-url" class="form-control" placeholder="http://qualtrics.com/asdfa">
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-success">Create Experiment</button>
+        </div>
+    </form>
+</template>
