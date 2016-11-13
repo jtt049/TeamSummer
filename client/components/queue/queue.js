@@ -1,4 +1,5 @@
 import Worker from '../../../universal/models/Worker.js';
+import constants from '../../../universal/config.js';
 
 export default function (Template) {
   Template['queue'].helpers({
@@ -28,6 +29,16 @@ export default function (Template) {
 
     this.autorun(() => {
       this.subscribe('Worker.select', this.getWorkerId());
+    });
+
+    let query = Worker.find({_id: this.getWorkerId()});
+
+    var handle = query.observeChanges({
+      changed: function(id, fields) {
+        if (fields.status == 'launch') {
+          window.open(constants.taskUrl);
+        }
+      }
     });
   });
 }
