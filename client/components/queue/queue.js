@@ -7,10 +7,20 @@ export default function (Template) {
     },
     worker: () => {
       return Worker.findOne(Session.get('currentWorkerId'));
+    },
+    isConfirmation: () => {
+
     }
   });
 
   Template['queue'].events({
+    'click .queue-cancel-btn' (event) {
+      Worker.remove({_id: Session.get('currentWorkerId')});
+      FlowRouter.go('/');
+    },
+    'click .queue-confirm-btn' (event) {
+      Worker.update({_id: Session.get('currentWorkerId')}, {$set: {status: 'confirmed'}});
+    }
   });
 
   Template['queue'].onCreated(function() {
