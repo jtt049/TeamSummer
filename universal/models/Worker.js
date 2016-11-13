@@ -9,6 +9,10 @@ Worker.attachSchema(
     id: {
       type: String
     },
+    status: {
+      type: String,
+      defaultValue: 'waiting'
+    },
     createdAt: {
       type: Date,
       denyUpdate: true

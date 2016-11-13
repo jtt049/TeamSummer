@@ -9,6 +9,10 @@ export default function (FlowRouter) {
     action: () => renderBasic('queue')
   });
 
+  FlowRouter.route('/dashboard', {
+    action: () => renderBasic('dashboard')
+  });
+
   FlowRouter.route('/createExperiment', {
     action: () => renderBasic('createExperiment')
   });
