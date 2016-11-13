@@ -36,7 +36,8 @@ export default function (Template) {
     var handle = query.observeChanges({
       changed: function(id, fields) {
         if (fields.status == 'launch') {
-          window.open(constants.taskUrl);
+          window.location = constants.taskUrl;
+          handle.stop();
         }
       }
     });
