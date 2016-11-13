@@ -11,20 +11,23 @@ export default function (Template) {
       const source = target.source.value;
       const id = target.sourceId.value;
 
-      console.log(source);
-
       // Insert a task into the collection
       Worker.insert({
         source: source,
         id: id,
         createdAt: new Date(), // current time
+      }, (err, _id) => {
+        if (err) {
+          console.error(err);
+        }
+
+        Session.set('currentWorkerId', _id);
+        FlowRouter.go('/queue');
       });
 
       // Clear form
       target.source.value = '';
       target.sourceId.value = '';
-
-      FlowRouter.go('/queue');
     },
   });
 

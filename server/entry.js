@@ -7,5 +7,6 @@ setupBrowserPolicy(BrowserPolicy);
 
 Meteor.startup(() => {
   loadUsers();
+  Worker();
   //loadFixtures([{ foo: 'bar' }], myCollection);
 });
