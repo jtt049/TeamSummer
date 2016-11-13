@@ -5,6 +5,10 @@ export default function (FlowRouter) {
     action: () => renderBasic('home')
   });
 
+  FlowRouter.route('/queue', {
+    action: () => renderBasic('queue')
+  });
+
   FlowRouter.route('/createExperiment', {
     action: () => renderBasic('createExperiment')
   });

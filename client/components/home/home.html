@@ -9,20 +9,20 @@
             </p>
         </div>
         <div class="col-sm-6">
-            <form action="">
+            <form class="login-worker">
                 <div class="form-group">
                     <label for="source">Source</label>
                     <select name="source" id="source" class="form-control">
-                        <option>Mechanical Turk</option>
-                        <option>UCSD SONA</option>
-                        <option>COGS 160</option>
+                        <option value="mturk">Mechanical Turk</option>
+                        <option value="ucsdsona">UCSD SONA</option>
+                        <option value="cogs160">COGS 160</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="source-id">ID</label>
-                    <input type="text" class="form-control" name="source-id">
+                    <label for="sourceId">ID</label>
+                    <input type="text" class="form-control" name="sourceId">
                 </div>
-                <button class="btn btn-block btn-primary">Next</button>
+                <input type="submit" class="btn btn-block btn-primary" value="Next">
             </form>
         </div>
     </div>
