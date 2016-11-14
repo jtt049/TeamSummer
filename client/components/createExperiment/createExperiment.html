@@ -1,0 +1,48 @@
+<template name="createExperiment">
+    <h1>Create an experiment</h1>
+    <form action="">
+        <div class="form-group">
+            <label for="name">Experiment Name</label>
+            <input type="number" name="name" id="name" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="team-size">Workers per Team</label>
+            <input type="number" name="team-size" id="team-size" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="queue-task">Queueing Task</label>
+            <input type="text" name="queue-task" id="queue-task" class="form-control" placeholder="http://tetris.com">
+        </div>
+        <div class="form-group">
+            <label for="constraints">Constraints</label>
+        </div>
+        <label for="task-url">Queueing Task</label>
+        <div class="form-group">
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Tetris
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Rock, Paper Scissors
+            </label>
+            <label class="radio-inline form-inline">
+                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Custom:
+                <input type="text" name="task-url" id="task-url" class="form-control" placeholder="http://qualtrics.com/asdfa">
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="sources">Sources</label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox"> Mechanical Turk
+                </label>
+                <label>
+                    <input type="checkbox"> SONA
+                </label>
+            </div>
+        </div>
+        <hr>
+        <div class="pull-right">
+            <button class="btn btn-success">Create Experiment</button>
+        </div>
+    </form>
+</template>

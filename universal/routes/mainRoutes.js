@@ -5,6 +5,18 @@ export default function (FlowRouter) {
     action: () => renderBasic('home')
   });
 
+  FlowRouter.route('/queue', {
+    action: () => renderBasic('queue')
+  });
+
+  FlowRouter.route('/dashboard', {
+    action: () => renderBasic('dashboard')
+  });
+
+  FlowRouter.route('/createExperiment', {
+    action: () => renderBasic('createExperiment')
+  });
+
   FlowRouter.notFound = {
     action: () => renderSlim('notFound')
   };
