@@ -27,6 +27,11 @@ export default function (Template) {
   Template['queue'].onCreated(function() {
     this.getWorkerId = () => Session.get('currentWorkerId');
 
+    // User doesn't have worker ID yet, return to home
+    if (!this.getWorkerId()) {
+      FlowRouter.go('/');
+    }
+
     this.autorun(() => {
       this.subscribe('Worker.select', this.getWorkerId());
     });
