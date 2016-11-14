@@ -11,6 +11,11 @@
     animation: load 2s linear infinite;
     margin: 0 auto;
   }
+
+  #worker-info {
+    margin: 15px auto;
+    width: 75%;
+  }
 }
 
 @keyframes load {
