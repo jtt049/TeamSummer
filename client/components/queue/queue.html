@@ -1,4 +1,6 @@
 <template name="queue">
+  <div id="queue" class="col-sm-offset-3 col-sm-6 text-center">
+    <div id="loader"></div>
     <h1>Waiting for team members...</h1>
     <p>Your worker ID: {{workerId}}</p>
 
@@ -26,4 +28,5 @@
         {{/if}}
 
     {{/with}}
+  </div>
 </template>
