@@ -1,5 +1,7 @@
 import Worker from '../../../universal/models/Worker.js';
 
+Meteor.subscribe('Worker');
+
 export default function (Template) {
   Template['dashboard'].helpers({
     workers: () => {
