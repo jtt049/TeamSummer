@@ -4,6 +4,11 @@ export default function (Template) {
   Template['dashboard'].helpers({
     workers: () => {
       return Worker.find();
+    },
+
+    graphStyles: () => {
+      let offset = Worker.find().count() * 20;
+      return "bottom: " + parseInt(offset) + "px";
     }
   });
 
