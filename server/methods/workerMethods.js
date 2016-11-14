@@ -3,7 +3,7 @@ import Worker from '../../universal/models/Worker.js';
 export default function () {
   Meteor.methods({
     'launchAllWorkers'() {
-      Worker.update({status: 'waiting'}, {$set: {status: 'confirm'}});
+      Worker.update({status: 'waiting'}, {$set: {status: 'confirm'}}, {multi: true});
 
       // TODO: Very bad, refactor (rewrite) when time permits
       let query = Worker.find({status: 'confirm'});
@@ -15,7 +15,7 @@ export default function () {
           count--;
 
           if (count == 0) {
-            Worker.update({status: 'confirmed'}, {$set: {status: 'launch'}});
+            Worker.update({status: 'confirmed'}, {$set: {status: 'launch'}}, {multi: true});
             handle.stop();
           }
         }
