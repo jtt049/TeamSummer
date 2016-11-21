@@ -9,6 +9,8 @@ Template.registerHelper('equals', function (a, b) {
   return a === b;
 });
 
+document.title = 'LegionTeams';
+
 createMainRoutes(FlowRouter);
 createHome(Template);
 createQueue(Template);

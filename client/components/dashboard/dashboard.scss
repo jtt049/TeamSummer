@@ -1,0 +1,47 @@
+@import '../../stylesheets/main';
+
+#participant-table {
+
+}
+
+#overview {
+  overflow: hidden;
+
+  #graph {
+    border: 1px $color-grey solid;
+    border-radius: 10px;
+    height: 350px;
+    position: relative;
+    padding: 0;
+
+    .graph-line {
+      width: 100%;
+      height: 25px;
+      border-bottom: 5px solid;
+      position: absolute;
+    }
+
+    #threshhold {
+       border-color: #00357D;
+       bottom: 300px;
+    }
+
+    #count {
+      border-color: #5194E3;
+      transition: bottom 1s;
+    }
+  }
+
+  #worker-launch {
+    padding: 50px 0;
+
+    button{
+      width: 80%;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.color-grey {
+  color: $color-grey;
+}

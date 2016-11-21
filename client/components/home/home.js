@@ -1,4 +1,5 @@
 import Worker from '../../../universal/models/Worker.js';
+import constants from '../../../universal/config.js';
 
 export default function (Template) {
   Template.home.events({
@@ -32,6 +33,9 @@ export default function (Template) {
   });
 
   Template.home.helpers({
+    taskDuration: () => {
+      return constants.waitDuration;
+    }
   });
 
   Template.home.rendered = function () {

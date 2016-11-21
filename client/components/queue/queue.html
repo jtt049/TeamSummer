@@ -1,10 +1,25 @@
 <template name="queue">
+  <div id="queue" class="col-sm-offset-3 col-sm-6 text-center">
+    <div id="loader"></div>
     <h1>Waiting for team members...</h1>
-    <p>Your worker ID: {{workerId}}</p>
 
     {{#with worker}}
-        <p>Source: {{source}}</p>
-        <p>Source ID: {{id}}</p>
+        <table id="worker-info" class="table table-bordered">
+          <tbody>
+            <tr>
+              <th scope="row">Worker ID</th>
+              <td>{{workerId}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Source</th>
+              <td>{{source}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Source ID</th>
+              <td>{{id}}</td>
+            </tr>
+          </tbody>
+        </table>
 
         {{#if equals status 'waiting'}}
             Currently waiting...
@@ -15,7 +30,6 @@
             <br />
             <button class="btn btn-danger queue-cancel-btn">Cancel</button>
             <button class="btn btn-primary queue-confirm-btn">I'm Ready</button>
-            
         {{/if}}
 
         {{#if equals status 'confirmed'}}
@@ -27,6 +41,8 @@
         {{/if}}
 
     {{/with}}
+
+  </div>
     <!--<div class="miniclip-game-embed" data-game-name="twisted-lines" data-theme="0" data-width="500" data-height="660" data-language="en"><a href="http://www.miniclip.com/games/twisted-lines/">Play Twisted Lines</a></div>-->
 <!--<p style="text-align:center;"><a href="http://www.miniclip.com/games/twisted-lines/" target="_blank">Play Twisted Lines</a> / More <a href="http://www.miniclip.com/games/genre-1/" target="_blank">Puzzle games</a></p>-->
 </template>
