@@ -13,6 +13,10 @@ export default function (FlowRouter) {
     action: () => renderBasic('dashboard')
   });
 
+  FlowRouter.route('/overview', {
+    action: () => renderBasic('overview')
+  });
+
   FlowRouter.route('/createExperiment', {
     action: () => renderBasic('createExperiment')
   });

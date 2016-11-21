@@ -4,6 +4,7 @@ import createHome from './components/home/home';
 import createHeader from './components/header/header';
 import createQueue from './components/queue/queue';
 import createDashboard from './components/dashboard/dashboard';
+import createExperimentsDashboard from './components/overview/overview';
 
 Template.registerHelper('equals', function (a, b) {
   return a === b;
@@ -15,4 +16,5 @@ createMainRoutes(FlowRouter);
 createHome(Template);
 createQueue(Template);
 createDashboard(Template);
+createExperimentsDashboard(Template);
 createHeader(Template);
