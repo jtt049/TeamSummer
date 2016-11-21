@@ -16,6 +16,10 @@ Worker.attachSchema(
     createdAt: {
       type: Date,
       denyUpdate: true
+    },
+    surveycode: {
+       type: String,
+       defaultValue: '1'
     }
   })
 );
