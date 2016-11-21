@@ -37,6 +37,20 @@ export default function (Template) {
       this.subscribe('Worker.select', this.getWorkerId());
     });
 
+    //closing window - remove user
+    Meteor.startup(function(){
+      $(window).bind('beforeunload', function() {
+        closingWindow();
+      });
+    });
+    closingWindow = function(){
+      //Only remove the worker if he has not been redirected by the app itself
+      status = Worker.findOne({_id: Session.get('currentWorkerId')}).status;
+      if(status != "launch")
+      Worker.remove({_id: Session.get('currentWorkerId')});
+    }
+
+
     let query = Worker.find({_id: this.getWorkerId()});
 
     var handle = query.observeChanges({
@@ -55,21 +69,41 @@ export default function (Template) {
             alert("This browser does not support desktop notification");
             }
 
-          // Let's check whether notification permissions have already been granted
-            else if (Notification.permission === "granted") {
-              new Notification("Are you ready for the task? Click on Confirm");
-              timerId = setInterval(function () {
-                new Notification("Reminder 1: Are you ready for the task? Click on Confirm. If not, you will be removed from the waiting list");
-              }, 120000);
-              timeoutId = setTimeout(function () {
-                status = Worker.findOne({_id: Session.get('currentWorkerId')}).status;
-                if(status != 'confirmed') {
-                  clearInterval(timerId);
-                  Worker.remove({_id: Session.get('currentWorkerId')});
-                  FlowRouter.go('/');
-                }
-              }, 180000);
-            }
+            // Let's check whether notification permissions have already been granted
+           else if (Notification.permission === "granted") {
+                var date = new Date()
+                var displaytime = 'Enter this time as the survey code for additional payment: ' + Worker.findOne({_id: Session.get('currentWorkerId')}).surveycode;
+                var notification = new Notification("Notification on! ", {
+                                  dir: "auto",
+                                  lang: "hi",
+                                  tag: "testTag"+date.getTime(),
+                                  icon: "../../../assets/notification.png",
+                                  body: displaytime
+                                  });
+                timerId = setInterval(function () {
+                new Notification("Reminder 1 : Notification on! ", {
+                                  dir: "auto",
+                                  lang: "hi",
+                                  tag: "testTag"+date.getTime(),
+                                  icon: "../../../assets/notification.png",
+                                  body: displaytime
+                                  });
+                   }, constants.notification2);
+                notification.onclick = function () {
+                          window.focus();
+                          notification.close();
+                        };
+
+                timeoutId = setTimeout(function () {
+                  status = Worker.findOne({_id: Session.get('currentWorkerId')}).status;
+                  if(status != 'confirmed') {
+                    console.log("in")
+                    clearInterval(timerId);
+                    Worker.remove({_id: Session.get('currentWorkerId')});
+                    FlowRouter.go('/');
+                  }
+                }, constants.canceltime);
+              }
 
             // Otherwise, we need to ask the user for permission
             else if (Notification.permission !== 'denied') {
