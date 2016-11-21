@@ -1,4 +1,4 @@
-
+import Experiment from "./Experiment";
 const Worker = new Mongo.Collection('Worker');
 
 Worker.attachSchema(
@@ -21,6 +21,10 @@ Worker.attachSchema(
        type: String,
        defaultValue: '1'
     }
+    // TODO: Fill out experiment ID when user is "logging in" to system
+    // experiment: {
+    //   type: Experiment,
+    // }
   })
 );
 
