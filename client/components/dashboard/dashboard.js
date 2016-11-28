@@ -12,13 +12,13 @@ export default function (Template) {
     },
 
     experiment: () => {
-      return Experiment.find().fetch()[0];
+      return Experiment.findOne(FlowRouter.getParam('experimentId'));
     },
 
     graphStyles: () => {
       //Will create an exception at first since Experiment hasn't loaded
-      let threshhold = Experiment.find().fetch()[0].teamSize;
-      let offset = Worker.find().count() * 300/threshhold;
+      let threshhold = Experiment.findOne(FlowRouter.getParam('experimentId')).teamSize;
+      let offset = Worker.find({experiment: FlowRouter.getParam('experimentId')}).count() * 300/threshhold;
       return "bottom: " + parseInt(offset) + "px";
     }
   });
@@ -55,7 +55,7 @@ export default function (Template) {
     'submit .settings-form' (event) {
       // Prevent default browser form submit
       event.preventDefault();
-      let currentExperiment = Experiment.find({}).fetch()[0];
+      let currentExperiment = Experiment.findOne(FlowRouter.getParam('experimentId'));
 
       // Get value from form element
       const target = event.target;

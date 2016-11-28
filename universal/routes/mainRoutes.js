@@ -6,10 +6,6 @@ export default function (FlowRouter) {
     action: () => renderBasic('home')
   });
 
-  FlowRouter.route('/dashboard', {
-    action: () => renderBasic('dashboard')
-  });
-
   FlowRouter.route('/overview', {
     action: () => renderBasic('overview')
   });
@@ -35,6 +31,10 @@ export default function (FlowRouter) {
         FlowRouter.go('/404');
       }
     }
+  });
+
+  FlowRouter.route('/experiment/:experimentId/dashboard', {
+    action: () => renderBasic('dashboard')
   });
 
   FlowRouter.notFound = {
