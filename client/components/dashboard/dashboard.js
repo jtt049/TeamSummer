@@ -8,7 +8,7 @@ export default function (Template) {
 
   Template['dashboard'].helpers({
     workers: () => {
-      return Worker.find();
+      return Worker.find({experiment: FlowRouter.getParam('experimentId')});
     },
 
     experiment: () => {
