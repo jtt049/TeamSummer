@@ -1,5 +1,7 @@
 import Worker from '../../../universal/models/Worker.js';
+import Experiment from '../../../universal/models/Experiment.js';
 import constants from '../../../universal/config.js';
+
 Meteor.subscribe('Worker');
 
 export default function (Template) {
@@ -56,7 +58,7 @@ export default function (Template) {
     var handle = query.observeChanges({
       changed: function(id, fields) {
         if (fields.status == 'launch') {
-          window.location = constants.taskUrl;
+          window.location =  Experiment.find().fetch()[0].taskURL;
           handle.stop();
         }
 
