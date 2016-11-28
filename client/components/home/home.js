@@ -1,43 +1,18 @@
-import Worker from '../../../universal/models/Worker.js';
-import constants from '../../../universal/config.js';
-
+// TODO: call this in entry file
 export default function (Template) {
-  Template.home.events({
-    'submit .login-worker'(event) {
+  Template['home'].helpers({
+  });
+
+  Template['home'].events({
+    'submit .goto-experiment'(event) {
       // Prevent default browser form submit
       event.preventDefault();
 
       // Get value from form element
       const target = event.target;
-      const source = target.source.value;
-      const id = target.sourceId.value;
+      const id = target.experimentId.value;
 
-      // Insert a task into the collection
-      Worker.insert({
-        source: source,
-        id: id,
-        createdAt: new Date(), // current time
-      }, (err, _id) => {
-        if (err) {
-          console.error(err);
-        }
-
-        Session.set('currentWorkerId', _id);
-        FlowRouter.go('/queue');
-      });
-
-      // Clear form
-      target.source.value = '';
-      target.sourceId.value = '';
-    },
-  });
-
-  Template.home.helpers({
-    taskDuration: () => {
-      return constants.waitDuration;
+      FlowRouter.go('/experiment/' + id);
     }
   });
-
-  Template.home.rendered = function () {
-  };
 }

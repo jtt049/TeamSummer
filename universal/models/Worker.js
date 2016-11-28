@@ -20,11 +20,10 @@ Worker.attachSchema(
     surveycode: {
        type: String,
        defaultValue: '1'
+    },
+    experiment: {
+      type: Experiment,
     }
-    // TODO: Fill out experiment ID when user is "logging in" to system
-    // experiment: {
-    //   type: Experiment,
-    // }
   })
 );
 

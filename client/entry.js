@@ -1,6 +1,7 @@
 import config from '../universal/config';
 import createMainRoutes from '../universal/routes/mainRoutes';
 import createHome from './components/home/home';
+import createExperimentLogin from './components/experimentLogin/experimentLogin';
 import createHeader from './components/header/header';
 import createQueue from './components/queue/queue';
 import createDashboard from './components/dashboard/dashboard';
@@ -14,6 +15,7 @@ document.title = 'LegionTeams';
 
 createMainRoutes(FlowRouter);
 createHome(Template);
+createExperimentLogin(Template);
 createQueue(Template);
 createDashboard(Template);
 createExperimentsDashboard(Template);

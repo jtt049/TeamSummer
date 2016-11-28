@@ -1,0 +1,48 @@
+<template name="experimentLogin">
+    <div class="page-home">
+        <div class="col-sm-6">
+            <h1>Welcome!</h1>
+            <p>
+                Here's what you will do in this HIT: <br><br>
+                <ul>
+                    <li>Read the consent text bellow.</li>
+                    <li>Allow notifications. Get your survey code in the first notification. </li>
+                    <li>Accept and submit HIT to get standard payment and be in the Mturk bonus system if you are using Mturk.</li>
+                    <li>Enter ID in the box provided</li>
+                </ul>
+                <br>
+                {{#with taskDuration}}
+                We expect this will be about {{taskDuration}} of waiting for
+                your team members. <strong> You can do other things while waiting.</strong>
+                This window just needs to be open in the background.
+                A pop-up will tell you when the team task is starting.  <br><br>
+                Remember to <strong>accept and submit the HIT</strong> on the MTurk site now before starting if you are using MTurk.
+                Accepting/submitting the HIT is required for you to get the standard payment and for it to be possible for us to
+                pay you.
+                {{/with}}
+                <br>
+                <p class=MsoNormal><span style='letter-spacing:-.15pt'><strong>If you are over 18 years
+                old, have read and understand all information on this page, and want to participate in
+                this research and continue, then enter your  ID 
+                to begin.</strong></span></p>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <form class="login-worker">
+                <div class="form-group">
+                    <label for="source">Source</label>
+                    <select name="source" id="source" class="form-control">
+                        <option value="mturk">Mechanical Turk</option>
+                        <option value="ucsdsona">UCSD SONA</option>
+                        <option value="cogs160">COGS 160</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sourceId">ID</label>
+                    <input type="text" class="form-control" name="sourceId">
+                </div>
+                <input type="submit" class="btn btn-block btn-primary" value="Next">
+            </form>
+        </div>
+    </div>
+</template>
