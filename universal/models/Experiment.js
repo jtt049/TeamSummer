@@ -6,13 +6,29 @@ Experiment.attachSchema(
     name: {
       type: String
     },
+    id: {
+      type: Number
+    },
     createdBy: {
       type: String,
-      autoValue: function(){ return this.userId }
+      //autoValue: function(){ return this.userId },
+      defaultValue: "Researcher 1"
     },
     createdAt: {
       type: Date,
       denyUpdate: true
+    },
+    teamSize: {
+      type: Number,
+      defaultValue: 15
+    },
+    taskURL: {
+      type: String,
+      defaultValue: 'https://docs.google.com/document/d/1nAVXdacAasKwrKXoT6tmQr0lsyOBJLVgo8eS1FgwUQU'
+    },
+    queueTask: {
+       type: String,
+       defaultValue: "Tetris"
     }
   })
 );
@@ -25,5 +41,8 @@ if (Meteor.isServer) {
     remove : () => true
   });
 }
+
+//Experiment.rawCollection().drop();
+
 
 export default Experiment;

@@ -36,5 +36,6 @@ if (Meteor.isServer) {
     remove : () => true
   });
 }
+//Worker.rawCollection().drop()
 
 export default Worker;
