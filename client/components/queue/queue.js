@@ -106,7 +106,7 @@ export default function (Template) {
                                   lang: "hi",
                                   tag: "testTag"+date.getTime(),
                                   icon: "notification.png",
-                                  body: "Click on I'm Ready to start the task! Proceed to the task - It is okay even if you have not completed the individual task!"
+                                  body: "Click on I'm Ready to start the task! Proceed to the task!"
                                   });
                 timerId = setInterval(function () {
                 audio.play();
@@ -115,7 +115,7 @@ export default function (Template) {
                                   lang: "hi",
                                   tag: "testTag"+date.getTime(),
                                   icon:"notification.png",
-                                  body: "Click on I'm Ready to start the task! Proceed to the task - It is okay even if you have not completed the individual task!"
+                                  body: "Click on I'm Ready to start the task! Proceed to the task!"
                                   });
                    }, constants.notification2);
                 notification.onclick = function () {
