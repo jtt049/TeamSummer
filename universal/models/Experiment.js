@@ -1,4 +1,3 @@
-
 const Experiment = new Mongo.Collection('Experiment');
 
 Experiment.attachSchema(
@@ -6,14 +5,10 @@ Experiment.attachSchema(
     name: {
       type: String
     },
-    id: {
-      type: Number
-    },
-    createdBy: {
-      type: String,
-      //autoValue: function(){ return this.userId },
-      defaultValue: "Researcher 1"
-    },
+    // createdBy: {
+    //   type: String,
+    //   autoValue: function(){ return this.userId }
+    // },
     createdAt: {
       type: Date,
       denyUpdate: true

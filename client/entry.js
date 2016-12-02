@@ -6,6 +6,7 @@ import createHeader from './components/header/header';
 import createQueue from './components/queue/queue';
 import createDashboard from './components/dashboard/dashboard';
 import createExperimentsDashboard from './components/overview/overview';
+import createExperimentCreation from './components/createExperiment/createExperiment';
 
 Template.registerHelper('equals', function (a, b) {
   return a === b;
@@ -19,4 +20,5 @@ createExperimentLogin(Template);
 createQueue(Template);
 createDashboard(Template);
 createExperimentsDashboard(Template);
+createExperimentCreation(Template);
 createHeader(Template);

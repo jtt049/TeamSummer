@@ -29,7 +29,6 @@ export default function (Template) {
       if (parseInt(Experiment.find({}).count()) < 1) {
         Experiment.insert({
           name: "Experiment #1",
-          id: 0,
           createdAt: new Date() // current time
         }, (err, _id) => {
           if (err) {
