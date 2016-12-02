@@ -17,9 +17,9 @@ Worker.attachSchema(
       type: Date,
       denyUpdate: true
     },
-    surveycode: {
+    launchTime: {
        type: String,
-       defaultValue: '1'
+       defaultValue: '0'
     },
     experiment: {
       type: Experiment,

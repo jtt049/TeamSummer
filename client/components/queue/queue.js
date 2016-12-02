@@ -57,6 +57,37 @@ export default function (Template) {
 
     var handle = query.observeChanges({
       changed: function(id, fields) {
+        var audio = new Audio();
+        audio.src = "bells.mp3";
+        audio.load();
+        if(fields.status == 'waiting')
+        {
+          if (!("Notification" in window)) {
+            alert("This browser does not support desktop notification");
+            }
+
+            // Let's check whether notification permissions have already been granted
+           else if (Notification.permission === "granted") {
+                audio.play();
+                var date = new Date()
+                var notification = new Notification("Allow Notifications!", {
+                                  dir: "auto",
+                                  lang: "hi",
+                                  tag: "testTag"+date.getTime(),
+                                  icon: "notification.png",
+                                  });
+              }
+
+            // Otherwise, we need to ask the user for permission
+            else if (Notification.permission !== 'denied') {
+              Notification.requestPermission(function (permission) {
+              if (permission === "granted") {
+                //Code for initial payment here!
+                var notification = new Notification("Granted Permission for Notifications");
+              }
+          });
+          }
+        }
         if (fields.status == 'launch') {
           window.location =  Experiment.find().fetch()[0].taskURL;
           handle.stop();
@@ -67,28 +98,24 @@ export default function (Template) {
         }
 
         if(fields.status == 'confirm'){
-           if (!("Notification" in window)) {
-            alert("This browser does not support desktop notification");
-            }
-
-            // Let's check whether notification permissions have already been granted
-           else if (Notification.permission === "granted") {
+            if (Notification.permission === "granted") {                
+                audio.play();
                 var date = new Date()
-                var displaytime = 'Enter this time as the survey code for additional payment: ' + Worker.findOne({_id: Session.get('currentWorkerId')}).surveycode;
-                var notification = new Notification("Notification on! ", {
+                var notification = new Notification("Notification on!", {
                                   dir: "auto",
                                   lang: "hi",
                                   tag: "testTag"+date.getTime(),
-                                  icon: "../../../assets/notification.png",
-                                  body: displaytime
+                                  icon: "notification.png",
+                                  body: "Click on I'm Ready to start the task! Proceed to the task!"
                                   });
                 timerId = setInterval(function () {
+                audio.play();
                 new Notification("Reminder 1 : Notification on! ", {
                                   dir: "auto",
                                   lang: "hi",
                                   tag: "testTag"+date.getTime(),
-                                  icon: "../../../assets/notification.png",
-                                  body: displaytime
+                                  icon:"notification.png",
+                                  body: "Click on I'm Ready to start the task! Proceed to the task!"
                                   });
                    }, constants.notification2);
                 notification.onclick = function () {
@@ -99,23 +126,12 @@ export default function (Template) {
                 timeoutId = setTimeout(function () {
                   status = Worker.findOne({_id: Session.get('currentWorkerId')}).status;
                   if(status != 'confirmed') {
-                    console.log("in")
                     clearInterval(timerId);
                     Worker.remove({_id: Session.get('currentWorkerId')});
                     FlowRouter.go('/');
                   }
                 }, constants.canceltime);
               }
-
-            // Otherwise, we need to ask the user for permission
-            else if (Notification.permission !== 'denied') {
-              Notification.requestPermission(function (permission) {
-              if (permission === "granted") {
-                //Code for initial payment here!
-                var notification = new Notification("Granted");
-              }
-          });
-          }
         }
       }
     });
