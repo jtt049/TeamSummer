@@ -1,6 +1,6 @@
 import Worker from '../../../universal/models/Worker.js';
 import Experiment from '../../../universal/models/Experiment.js';
-import Event from './Event';
+import Event from '../../../universal/models/Event';
 import constants from '../../../universal/config.js';
 
 Meteor.subscribe('Worker');
@@ -40,7 +40,7 @@ export default function (Template) {
     'click .queue-confirm-btn' (event) {
       Worker.update({_id: Session.get('currentWorkerId')}, {$set: {status: 'confirmed'}}, function(err, numUpdated) {
         if (err) {
-          console.err(err);
+          console.error(err);
         }
         else {
           // Record event
