@@ -1,12 +1,16 @@
 import Worker from '../../universal/models/Worker.js';
 import Event from '../../universal/models/Event.js';
+import { check } from 'meteor/check';
 
 export default function () {
   Meteor.methods({
-    'launchAllWorkers'() {
-      Worker.update({ status: 'waiting' }, { $set: { status: 'confirm' } }, { multi: true });
+    'launchAllWorkers'(experimentId) {
+      // TODO: Check if experiment ID exists
+      check(experimentId, String);
+
+      Worker.update({ status: 'waiting', experiment: experimentId }, { $set: { status: 'confirm' } }, { multi: true });
       // TODO: Very bad, refactor (rewrite) when time permits
-      let query = Worker.find({ status: 'confirm' });
+      let query = Worker.find({ status: 'confirm', experiment: experimentId });
 
       let count = query.count();
 
