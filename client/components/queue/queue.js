@@ -1,5 +1,6 @@
 import Worker from '../../../universal/models/Worker.js';
 import Experiment from '../../../universal/models/Experiment.js';
+import Event from './Event';
 import constants from '../../../universal/config.js';
 
 Meteor.subscribe('Worker');
@@ -19,11 +20,38 @@ export default function (Template) {
 
   Template['queue'].events({
     'click .queue-cancel-btn' (event) {
-      Worker.remove({_id: Session.get('currentWorkerId')});
+      Worker.remove({_id: Session.get('currentWorkerId')}, function(err) {
+        if (err) {
+          console.error(err);
+        }
+        else {
+          // Record event
+          Event.insert({
+            action: 'canceled',
+            worker: Session.get('currentWorkerId'),
+            experiment: FlowRouter.getParam('experimentId'),
+            timestamp: new Date()
+          });
+        }
+      });
+
       FlowRouter.go('/');
     },
     'click .queue-confirm-btn' (event) {
-      Worker.update({_id: Session.get('currentWorkerId')}, {$set: {status: 'confirmed'}});
+      Worker.update({_id: Session.get('currentWorkerId')}, {$set: {status: 'confirmed'}}, function(err, numUpdated) {
+        if (err) {
+          console.err(err);
+        }
+        else {
+          // Record event
+          Event.insert({
+            action: 'confirmed',
+            worker: Session.get('currentWorkerId'),
+            experiment: FlowRouter.getParam('experimentId'),
+            timestamp: new Date()
+          });
+        }
+      });
     }
   });
 
@@ -49,7 +77,21 @@ export default function (Template) {
       //Only remove the worker if he has not been redirected by the app itself
       status = Worker.findOne({_id: Session.get('currentWorkerId')}).status;
       if(status != "launch")
-      Worker.remove({_id: Session.get('currentWorkerId')});
+      Worker.remove({_id: Session.get('currentWorkerId')}, function(err) {
+        if (err) {
+          console.error(err);
+        }
+        else {
+          // Record event
+          Event.insert({
+            action: 'closedWindow',
+            worker: Session.get('currentWorkerId'),
+            experiment: FlowRouter.getParam('experimentId'),
+            timestamp: new Date()
+          });
+        }
+      });
+
     }
 
 
@@ -127,7 +169,20 @@ export default function (Template) {
                   status = Worker.findOne({_id: Session.get('currentWorkerId')}).status;
                   if(status != 'confirmed') {
                     clearInterval(timerId);
-                    Worker.remove({_id: Session.get('currentWorkerId')});
+                    Worker.remove({_id: Session.get('currentWorkerId')}, function(err) {
+                      if (err) {
+                        console.error(err);
+                      }
+                      else {
+                        // Record event
+                        Event.insert({
+                          action: 'timedOut',
+                          worker: Session.get('currentWorkerId'),
+                          experiment: FlowRouter.getParam('experimentId'),
+                          timestamp: new Date()
+                        });
+                      }
+                    });
                     FlowRouter.go('/');
                   }
                 }, constants.canceltime);

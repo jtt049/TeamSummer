@@ -1,4 +1,5 @@
 import Worker from '../../../universal/models/Worker.js';
+import Event from '../../../universal/models/Event.js';
 import Experiment from '../../../universal/models/Experiment.js';
 import constants from '../../../universal/config.js';
 
@@ -23,6 +24,14 @@ export default function (Template) {
         if (err) {
           console.error(err);
         }
+
+        // Record login
+        Event.insert({
+          action: 'logged_in',
+          worker: _id,
+          experiment: FlowRouter.getParam('experimentId'),
+          timestamp: new Date()
+        });
 
         Session.set('currentWorkerId', _id);
         FlowRouter.go('/experiment/' + FlowRouter.getParam('experimentId') + '/queue');
