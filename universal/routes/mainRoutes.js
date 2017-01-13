@@ -37,6 +37,10 @@ export default function (FlowRouter) {
     action: () => renderBasic('dashboard')
   });
 
+  FlowRouter.route('/requester/login', {
+    action: () => renderBasic('login')
+  });
+
   FlowRouter.notFound = {
     action: () => renderSlim('notFound')
   };
