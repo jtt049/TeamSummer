@@ -1,3 +1,4 @@
 .idea/*
 private/build
 node_modules
+.deploy
