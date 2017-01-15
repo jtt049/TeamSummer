@@ -8,16 +8,5 @@ export default function (Template) {
   });
 
   Template['requester'].events({
-    'click .create-experiment-button': (event) => {
-      event.preventDefault();
-      FlowRouter.go('/requester/experiment/create');
-    },
-    'click .manage-experiment': (event) => {
-      event.preventDefault();
-
-      const experimentId = $(event.currentTarget).data('id');
-
-      FlowRouter.go('/experiment/' + experimentId + '/dashboard');
-    }
   });
 }

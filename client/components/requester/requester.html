@@ -5,7 +5,11 @@
         </div>
 
         <div>
-            <h2>Experiments <span class="pull-right"><a href="#" class="btn btn-success create-experiment-button">Create Experiment</a></span>
+            <h2>Experiments <span class="pull-right">
+                <a href="/requester/experiment/create" class="btn btn-success create-experiment-button">
+                    Create Experiment
+                </a>
+            </span>
             </h2>
         </div>
         <table class="table table-hover">
@@ -24,9 +28,9 @@
                     <td><a href="{{taskURL}}">{{taskURL}}</a></td>
                     <td>{{createdAt}}</td>
                     <td>
-                        <button class="btn btn-primary manage-experiment" data-id="{{_id}}">
+                        <a href="'/experiment/{{_id}}/dashboard" class="btn btn-primary manage-experiment">
                             <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
-                        </button>
+                        </a>
                     </td>
                 </tr>
             {{/each}}
