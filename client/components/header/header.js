@@ -26,6 +26,6 @@ export default function (Template) {
         dict.set('showLogin', !dict.get('showLogin'));
       }, 600);
     },
-    'click .log-out.button' : () => Meteor.logout()
+    'click .log-out-button' : () => Meteor.logout()
   });
 }
