@@ -10,10 +10,6 @@ export default function (FlowRouter) {
     action: () => renderBasic('overview')
   });
 
-  FlowRouter.route('/createExperiment', {
-    action: () => renderBasic('createExperiment')
-  });
-
   // TODO: Refactor into group
   FlowRouter.route('/experiment/:experimentId', {
     action: (params, queryParams) => {
@@ -39,6 +35,10 @@ export default function (FlowRouter) {
 
   FlowRouter.route('/requester', {
     action: () => renderBasic('requester')
+  });
+
+  FlowRouter.route('/requester/experiment/create', {
+    action: () => renderBasic('createExperiment')
   });
 
   FlowRouter.notFound = {

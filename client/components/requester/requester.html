@@ -4,14 +4,18 @@
             <h1>Requester Dashboard</h1>
         </div>
 
-        <h2>Experiments</h2>
+        <div>
+            <h2>Experiments <span class="pull-right"><a href="#" class="btn btn-success create-experiment-button">Create Experiment</a></span>
+            </h2>
+        </div>
         <table class="table table-hover">
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Task URL</th>
-                    <th>Created</th>
-                </tr>
+            <tr>
+                <th>Name</th>
+                <th>Task URL</th>
+                <th>Created</th>
+                <th>Manage</th>
+            </tr>
             </thead>
             <tbody>
             {{#each experiments}}
@@ -19,6 +23,11 @@
                     <td>{{name}}</td>
                     <td><a href="{{taskURL}}">{{taskURL}}</a></td>
                     <td>{{createdAt}}</td>
+                    <td>
+                        <button class="btn btn-primary manage-experiment" data-id="{{_id}}">
+                            <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+                        </button>
+                    </td>
                 </tr>
             {{/each}}
             </tbody>
