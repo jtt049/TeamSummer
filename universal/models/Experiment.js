@@ -19,7 +19,7 @@ Experiment.attachSchema(
     },
     taskURL: {
       type: String,
-      defaultValue: 'https://docs.google.com/document/d/1nAVXdacAasKwrKXoT6tmQr0lsyOBJLVgo8eS1FgwUQU'
+      defaultValue: 'https://ucsdsocialsciences.co1.qualtrics.com/jfe/form/SV_ezeXGqvRa5q1m5f'
     },
     queueTask: {
        type: String,
